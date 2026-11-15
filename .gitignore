@@ -1,0 +1,4 @@
+public/api/
+data/.verified.json
+__pycache__/
+*.pyc

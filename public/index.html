@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARM64 RootFS Hub · Linux 发行版根文件系统下载站</title>
+<meta name="description" content="arm64/aarch64 Linux rootfs 静态 JSON API 与下载站，适配 Termux / proot / tawcroot。">
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1b2430; --muted:#5b6773;
+    --line:#e3e7ec; --accent:#0f62fe; --ok:#0f7b5f; --warn:#b5442a;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0f1319; --card:#161c24; --ink:#e6ebf1; --muted:#98a3b0;
+           --line:#232b35; --accent:#6ea8fe; --ok:#41c79a; --warn:#ff8a70; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:15px/1.6 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 18px 64px}
+  header h1{font-size:24px;margin:0 0 6px;letter-spacing:-.2px}
+  header p{margin:0;color:var(--muted);font-size:14px}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--muted)}
+  .pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .toolbar{display:flex;gap:10px;margin:22px 0 8px;flex-wrap:wrap}
+  .search{flex:1 1 240px;min-width:200px;padding:10px 14px;border:1px solid var(--line);
+          border-radius:10px;background:var(--card);color:var(--ink);font-size:14px}
+  .search:focus{outline:2px solid color-mix(in srgb,var(--accent) 35%,transparent);border-color:var(--accent)}
+  .sys{background:var(--card);border:1px solid var(--line);border-radius:14px;
+       padding:18px;margin:16px 0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .sys-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .sys-title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .sys-title h2{margin:0;font-size:18px;letter-spacing:-.2px}
+  .tag{font-size:12px;padding:2px 8px;border-radius:6px;border:1px solid var(--line);
+       color:var(--muted);background:var(--bg)}
+  .tag.musl{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent)}
+  .sys-desc{color:var(--muted);font-size:14px;margin:8px 0 14px}
+  .count{font-size:12px;color:var(--muted);white-space:nowrap}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{text-align:left;color:var(--muted);font-weight:500;font-size:12px;
+           padding:6px 8px;border-bottom:1px solid var(--line)}
+  tbody td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  .ver{font-family:var(--mono);font-weight:600}
+  .sub{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+  .hint{display:block;color:var(--muted);font-size:12px;margin-top:3px;max-width:420px}
+  .hint.bad{color:var(--warn)}
+  .size{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+  .act{display:flex;gap:6px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-size:12.5px;
+       padding:5px 10px;border-radius:8px;border:1px solid var(--line);color:var(--ink);
+       background:var(--bg);cursor:pointer;font-family:inherit;white-space:nowrap}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{opacity:.9;color:#fff}
+  .down{opacity:.45;pointer-events:none}
+  .api{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:26px}
+  .api h3{margin:0 0 10px;font-size:16px}
+  .api pre{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;
+           overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.65;margin:10px 0 0}
+  footer{color:var(--muted);font-size:12.5px;margin-top:30px;text-align:center;line-height:1.9}
+  .empty{color:var(--muted);text-align:center;padding:26px}
+  #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;
+         background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:10px;font-size:13px;
+         transition:.22s;pointer-events:none}
+  #toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>ARM64 RootFS Hub</h1>
+    <p>arm64 / aarch64 Linux 根文件系统下载站 · 适配 Termux / proot / tawcroot</p>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <div class="toolbar">
+    <input class="search" id="q" type="search" placeholder="搜索发行版 / 版本 / 代号，如 debian、jammy、3.21">
+  </div>
+
+  <div id="list"></div>
+
+  <div class="api">
+    <h3>静态 JSON API</h3>
+    <p style="margin:0;color:var(--muted);font-size:13.5px">
+      全部为 GitHub Pages 上的静态文件，可直接 GET，无需鉴权，支持 CORS。
+    </p>
+<pre id="apiblock"></pre>
+  </div>
+
+  <footer>
+    数据来源为各发行版官方镜像与国内镜像站，链接可用性由 GitHub Actions 每周校验一次。<br>
+    本页为静态站点，不含后端服务。
+  </footer>
+</div>
+<div id="toast"></div>
+
+<script>
+const BASE = (function(){
+  const p = location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+  return p;
+})();
+const API = BASE + '/api';
+
+const fmtDate = s => s ? s.replace('T',' ').replace('+00:00',' UTC') : '—';
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+let DATA = null;
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('show'), 1600);
+}
+
+function copy(text){
+  navigator.clipboard?.writeText(text).then(()=>toast('已复制'), ()=>toast('复制失败'));
+}
+
+function renderMeta(meta){
+  document.getElementById('meta').innerHTML = `
+    <span class="pill">架构 ${esc(meta.arch)}</span>
+    <span class="pill">${meta.counts.systems} 个发行版</span>
+    <span class="pill">${meta.counts.versions} 个版本</span>
+    <span class="pill">${meta.counts.available} 个可用</span>
+    <span class="pill">校验 ${esc(fmtDate(meta.verified_at))}</span>`;
+}
+
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const list = document.getElementById('list');
+  const systems = DATA.systems.filter(s => {
+    if (!q) return true;
+    if (s.name.toLowerCase().includes(q) || s.id.includes(q)) return true;
+    return s.versions.some(v =>
+      v.version.toLowerCase().includes(q) ||
+      (v.codename||'').toLowerCase().includes(q) ||
+      (v.series||'').toLowerCase().includes(q));
+  });
+
+  if (!systems.length){
+    list.innerHTML = `<div class="empty">没有匹配的发行版或版本</div>`;
+    return;
+  }
+
+  list.innerHTML = systems.map(s => {
+    const rows = s.versions
+      .filter(v => !q || s.name.toLowerCase().includes(q) || s.id.includes(q) ||
+        v.version.toLowerCase().includes(q) ||
+        (v.codename||'').toLowerCase().includes(q) ||
+        (v.series||'').toLowerCase().includes(q))
+      .map(v => {
+        const dl = `${API}/download/${s.id}/${encodeURIComponent(v.version)}.json`;
+        const direct = v.download.url;
+        const fname = v.file;
+        const hint = v.tawcroot
+          ? `<span class="hint">${esc(v.tawcroot)}</span>`
+          : '';
+        const sub = [v.codename, v.series && v.series !== v.version ? v.series : null]
+          .filter(Boolean).map(esc).join(' · ');
+        return `<tr>
+          <td>
+            <span class="ver">${esc(v.version)}</span>
+            ${sub ? `<span class="sub">${sub}</span>` : ''}
+          </td>
+          <td class="size">${esc(v.size_human || '—')}</td>
+          <td>
+            <div class="act">
+              <a class="btn primary ${v.download.available ? '' : 'down'}"
+                 href="${esc(direct)}" rel="noopener" download>下载</a>
+              <button class="btn" data-copy="curl -L -O ${esc(direct)}">复制 curl</button>
+              <a class="btn" href="${esc(dl)}" target="_blank" rel="noopener">JSON</a>
+            </div>
+            ${hint}
+          </td>
+        </tr>`;
+      }).join('');
+
+    return `<section class="sys">
+      <div class="sys-head">
+        <div class="sys-title">
+          <h2>${esc(s.name)}</h2>
+          <span class="tag ${s.libc === 'musl' ? 'musl' : ''}">${esc(s.libc)}</span>
+          <span class="tag">${esc(s.package_manager)}</span>
+          ${s.rolling ? '<span class="tag">rolling</span>' : ''}
+        </div>
+        <span class="count">${s.versions.length} 个版本</span>
+      </div>
+      <p class="sys-desc">${esc(s.description)}</p>
+      <table>
+        <thead><tr><th>版本</th><th>体积</th><th>获取</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </section>`;
+  }).join('');
+
+  list.querySelectorAll('button[data-copy]').forEach(b =>
+    b.addEventListener('click', () => copy(b.dataset.copy)));
+}
+
+function renderApi(){
+  const origin = location.origin + BASE;
+  document.getElementById('apiblock').textContent =
+`# 发行版列表
+GET ${origin}/api/systems.json
+
+# 指定发行版的所有版本
+GET ${origin}/api/systems/debian.json
+
+# 指定版本的下载信息（含体积、镜像、校验文件）
+GET ${origin}/api/download/ubuntu/22.04.5.json
+
+# 全量目录（一次拿全部）
+GET ${origin}/api/all.json`;
+}
+
+fetch(API + '/all.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => {
+    DATA = d;
+    renderMeta(d.meta);
+    renderApi();
+    render();
+    document.getElementById('q').addEventListener('input', render);
+  })
+  .catch(e => {
+    document.getElementById('list').innerHTML =
+      `<div class="empty">数据加载失败（${esc(e.message)}）。若刚部署，请等 Pages 构建完成。</div>`;
+  });
+</script>
+</body>
+</html>
