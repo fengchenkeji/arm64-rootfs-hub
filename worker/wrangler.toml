@@ -1,0 +1,11 @@
+name = "arm64-rootfs-hub"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# 部署后默认在 https://arm64-rootfs-hub.<你的子域>.workers.dev
+workers_dev = true
+
+# 想绑自定义域名时取消注释：
+# routes = [
+#   { pattern = "rootfs.example.com/*", zone_name = "example.com" }
+# ]
