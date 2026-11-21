@@ -1,0 +1,1 @@
+https://cloud.debian.org/images/cloud/bookworm/latest/SHA512SUMS

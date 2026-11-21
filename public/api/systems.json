@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "schema": "arm64-rootfs-hub/v2",
+    "verified_at": "2026-11-21T02:12:40+00:00",
+    "generated_at": "2026-11-21T02:12:40+00:00",
+    "counts": {
+      "systems": 7,
+      "versions": 18,
+      "available": 18
+    }
+  },
+  "systems": [
+    {
+      "id": "alpine",
+      "name": "Alpine Linux",
+      "libc": "musl",
+      "package_manager": "apk",
+      "rolling": false,
+      "description": "musl libc，体积最小，syscall 极简，tawcroot 下兼容性最好。",
+      "homepage": "https://alpinelinux.org/",
+      "version_count": 6,
+      "available_count": 6,
+      "latest": "3.24.4",
+      "endpoint": "api/systems/alpine.json",
+      "text_endpoint": "api/t/versions/alpine.txt",
+      "versions": [
+        "3.24.4",
+        "3.23.8",
+        "3.22.8",
+        "3.21.10",
+        "3.20.10",
+        "3.19.9"
+      ]
+    },
+    {
+      "id": "ubuntu",
+      "name": "Ubuntu",
+      "libc": "glibc",
+      "package_manager": "apt",
+      "rolling": false,
+      "description": "生态与文档最完善；版本越新 glibc 越激进，tawcroot 兼容压力越大。",
+      "homepage": "https://ubuntu.com/",
+      "version_count": 4,
+      "available_count": 4,
+      "latest": "25.10",
+      "endpoint": "api/systems/ubuntu.json",
+      "text_endpoint": "api/t/versions/ubuntu.txt",
+      "versions": [
+        "25.10",
+        "24.04.5",
+        "22.04.5",
+        "20.04.5"
+      ]
+    },
+    {
+      "id": "debian",
+      "name": "Debian",
+      "libc": "glibc",
+      "package_manager": "apt",
+      "rolling": false,
+      "description": "glibc 保守、syscall 稳定，tawcroot 下最稳的 glibc 发行版。",
+      "homepage": "https://www.debian.org/",
+      "version_count": 3,
+      "available_count": 3,
+      "latest": "13",
+      "endpoint": "api/systems/debian.json",
+      "text_endpoint": "api/t/versions/debian.txt",
+      "versions": [
+        "13",
+        "12",
+        "11"
+      ]
+    },
+    {
+      "id": "arch",
+      "name": "Arch Linux ARM",
+      "libc": "glibc",
+      "package_manager": "pacman",
+      "rolling": true,
+      "description": "滚动发行，软件最新；TAWC 原生适配的默认发行版。",
+      "homepage": "https://archlinuxarm.org/",
+      "version_count": 1,
+      "available_count": 1,
+      "latest": "latest",
+      "endpoint": "api/systems/arch.json",
+      "text_endpoint": "api/t/versions/arch.txt",
+      "versions": [
+        "latest"
+      ]
+    },
+    {
+      "id": "void",
+      "name": "Void Linux",
+      "libc": "glibc",
+      "package_manager": "xbps",
+      "rolling": true,
+      "description": "轻量、无 systemd，官方提供 glibc 与 musl 双版本 ROOTFS。",
+      "homepage": "https://voidlinux.org/",
+      "version_count": 2,
+      "available_count": 2,
+      "latest": "20250202",
+      "endpoint": "api/systems/void.json",
+      "text_endpoint": "api/t/versions/void.txt",
+      "versions": [
+        "20250202",
+        "20250202-musl"
+      ]
+    },
+    {
+      "id": "gentoo",
+      "name": "Gentoo",
+      "libc": "glibc",
+      "package_manager": "emerge",
+      "rolling": true,
+      "description": "源码级发行版，官方 stage3 可作为 rootfs 起点（需自行配置 profile）。",
+      "homepage": "https://www.gentoo.org/",
+      "version_count": 1,
+      "available_count": 1,
+      "latest": "20261115",
+      "endpoint": "api/systems/gentoo.json",
+      "text_endpoint": "api/t/versions/gentoo.txt",
+      "versions": [
+        "20261115"
+      ]
+    },
+    {
+      "id": "rocky",
+      "name": "Rocky Linux",
+      "libc": "glibc",
+      "package_manager": "dnf",
+      "rolling": false,
+      "description": "RHEL 兼容企业发行版，官方提供容器根文件系统 tar。",
+      "homepage": "https://rockylinux.org/",
+      "version_count": 1,
+      "available_count": 1,
+      "latest": "9-latest",
+      "endpoint": "api/systems/rocky.json",
+      "text_endpoint": "api/t/versions/rocky.txt",
+      "versions": [
+        "9-latest"
+      ]
+    }
+  ]
+}

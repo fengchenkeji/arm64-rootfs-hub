@@ -1,0 +1,75 @@
+{
+  "id": "debian",
+  "name": "Debian",
+  "libc": "glibc",
+  "package_manager": "apt",
+  "rolling": false,
+  "description": "glibc 保守、syscall 稳定，tawcroot 下最稳的 glibc 发行版。",
+  "homepage": "https://www.debian.org/",
+  "version_count": 3,
+  "versions": [
+    {
+      "version": "13",
+      "series": "trixie",
+      "codename": "trixie",
+      "flavor": null,
+      "kind": "genericcloud",
+      "arch": "arm64",
+      "file": "debian-13-genericcloud-arm64.tar.xz",
+      "size_bytes": 214787036,
+      "size_human": "204.8 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/debian/13.json",
+      "text_endpoint": "api/t/url/debian/13.txt",
+      "direct_url": "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-arm64.tar.xz",
+      "mirrors": [
+        "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-arm64.tar.xz"
+      ],
+      "tawcroot": "glibc 2.41，少量新 syscall，多数命令可用。",
+      "note": "官方云镜像 tar 包。"
+    },
+    {
+      "version": "12",
+      "series": "bookworm",
+      "codename": "bookworm",
+      "flavor": null,
+      "kind": "genericcloud",
+      "arch": "arm64",
+      "file": "debian-12-genericcloud-arm64.tar.xz",
+      "size_bytes": 210645092,
+      "size_human": "200.9 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/debian/12.json",
+      "text_endpoint": "api/t/url/debian/12.txt",
+      "direct_url": "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-arm64.tar.xz",
+      "mirrors": [
+        "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-arm64.tar.xz"
+      ],
+      "tawcroot": "glibc 2.36，推荐：稳定性与软件新旧最佳平衡。",
+      "note": "当前稳定 LTS。"
+    },
+    {
+      "version": "11",
+      "series": "bullseye",
+      "codename": "bullseye",
+      "flavor": null,
+      "kind": "genericcloud",
+      "arch": "arm64",
+      "file": "debian-11-genericcloud-arm64.tar.xz",
+      "size_bytes": 163734624,
+      "size_human": "156.1 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/debian/11.json",
+      "text_endpoint": "api/t/url/debian/11.txt",
+      "direct_url": "https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-arm64.tar.xz",
+      "mirrors": [
+        "https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-arm64.tar.xz"
+      ],
+      "tawcroot": "glibc 2.31，兼容性最好，软件偏旧。",
+      "note": "旧版 LTS。"
+    }
+  ]
+}

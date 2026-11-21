@@ -1,0 +1,22 @@
+{
+  "system": "ubuntu",
+  "system_name": "Ubuntu",
+  "version": "22.04.5",
+  "codename": "jammy",
+  "flavor": null,
+  "arch": "arm64",
+  "file": "ubuntu-base-22.04.5-base-arm64.tar.gz",
+  "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz",
+  "source": "official",
+  "size_bytes": 27671306,
+  "size_human": "26.4 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz",
+    "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz"
+  ],
+  "checksum_url": "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/SHA256SUMS",
+  "tawcroot": "glibc 2.35，兼容与特性平衡，proot / tawcroot 通用首选。",
+  "note": "主流 LTS。"
+}

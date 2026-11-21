@@ -1,0 +1,22 @@
+{
+  "system": "arch",
+  "system_name": "Arch Linux ARM",
+  "version": "latest",
+  "codename": null,
+  "flavor": null,
+  "arch": "arm64",
+  "file": "ArchLinuxARM-aarch64-latest.tar.gz",
+  "url": "https://mirrors.aliyun.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz",
+  "source": "official",
+  "size_bytes": 829367415,
+  "size_human": "790.9 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://mirrors.aliyun.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz",
+    "https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz"
+  ],
+  "checksum_url": null,
+  "tawcroot": "配合 TAWC 合成器体验最佳；滚动 glibc 较新，个别 syscall 需补适配。",
+  "note": "每日滚动构建，无历史版本。"
+}

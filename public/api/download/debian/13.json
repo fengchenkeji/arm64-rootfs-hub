@@ -1,0 +1,21 @@
+{
+  "system": "debian",
+  "system_name": "Debian",
+  "version": "13",
+  "codename": "trixie",
+  "flavor": null,
+  "arch": "arm64",
+  "file": "debian-13-genericcloud-arm64.tar.xz",
+  "url": "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-arm64.tar.xz",
+  "source": "official",
+  "size_bytes": 214787036,
+  "size_human": "204.8 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-arm64.tar.xz"
+  ],
+  "checksum_url": "https://cloud.debian.org/images/cloud/trixie/latest/SHA512SUMS",
+  "tawcroot": "glibc 2.41，少量新 syscall，多数命令可用。",
+  "note": "官方云镜像 tar 包。"
+}

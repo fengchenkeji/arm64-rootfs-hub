@@ -1,0 +1,33 @@
+{
+  "id": "gentoo",
+  "name": "Gentoo",
+  "libc": "glibc",
+  "package_manager": "emerge",
+  "rolling": true,
+  "description": "源码级发行版，官方 stage3 可作为 rootfs 起点（需自行配置 profile）。",
+  "homepage": "https://www.gentoo.org/",
+  "version_count": 1,
+  "versions": [
+    {
+      "version": "20261115",
+      "series": "autobuilds",
+      "codename": null,
+      "flavor": null,
+      "kind": "stage3",
+      "arch": "arm64",
+      "file": "stage3-arm64-openrc-20261115T234600Z.tar.xz",
+      "size_bytes": 246978772,
+      "size_human": "235.5 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/gentoo/20261115.json",
+      "text_endpoint": "api/t/url/gentoo/20261115.txt",
+      "direct_url": "https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz",
+      "mirrors": [
+        "https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz"
+      ],
+      "tawcroot": "stage3 仅为起点，需自行 emerge；缺 profile 时部分命令不可用。",
+      "note": "stage3 openrc，非开箱即用 rootfs。"
+    }
+  ]
+}

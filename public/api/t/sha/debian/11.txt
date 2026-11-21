@@ -1,0 +1,1 @@
+https://cloud.debian.org/images/cloud/bullseye/latest/SHA512SUMS

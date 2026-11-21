@@ -1,0 +1,34 @@
+{
+  "id": "arch",
+  "name": "Arch Linux ARM",
+  "libc": "glibc",
+  "package_manager": "pacman",
+  "rolling": true,
+  "description": "滚动发行，软件最新；TAWC 原生适配的默认发行版。",
+  "homepage": "https://archlinuxarm.org/",
+  "version_count": 1,
+  "versions": [
+    {
+      "version": "latest",
+      "series": "rolling",
+      "codename": null,
+      "flavor": null,
+      "kind": "generic",
+      "arch": "arm64",
+      "file": "ArchLinuxARM-aarch64-latest.tar.gz",
+      "size_bytes": 829367415,
+      "size_human": "790.9 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/arch/latest.json",
+      "text_endpoint": "api/t/url/arch/latest.txt",
+      "direct_url": "https://mirrors.aliyun.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz",
+      "mirrors": [
+        "https://mirrors.aliyun.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz",
+        "https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz"
+      ],
+      "tawcroot": "配合 TAWC 合成器体验最佳；滚动 glibc 较新，个别 syscall 需补适配。",
+      "note": "每日滚动构建，无历史版本。"
+    }
+  ]
+}

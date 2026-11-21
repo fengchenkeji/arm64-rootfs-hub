@@ -1,0 +1,144 @@
+{
+  "id": "alpine",
+  "name": "Alpine Linux",
+  "libc": "musl",
+  "package_manager": "apk",
+  "rolling": false,
+  "description": "musl libc，体积最小，syscall 极简，tawcroot 下兼容性最好。",
+  "homepage": "https://alpinelinux.org/",
+  "version_count": 6,
+  "versions": [
+    {
+      "version": "3.24.4",
+      "series": "v3.24",
+      "codename": null,
+      "flavor": null,
+      "kind": "minirootfs",
+      "arch": "arm64",
+      "file": "alpine-minirootfs-3.24.4-aarch64.tar.gz",
+      "size_bytes": 4029843,
+      "size_human": "3.8 MB",
+      "available": true,
+      "source": "github",
+      "download_endpoint": "api/download/alpine/3.24.4.json",
+      "text_endpoint": "api/t/url/alpine/3.24.4.txt",
+      "direct_url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.24.4-aarch64.tar.gz",
+      "mirrors": [
+        "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.24.4-aarch64.tar.gz",
+        "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz"
+      ],
+      "tawcroot": "开箱即用；musl 程序 syscall 面最小。",
+      "note": "musl 与 glibc 不兼容，跑不了 Qt/glibc 二进制。"
+    },
+    {
+      "version": "3.23.8",
+      "series": "v3.23",
+      "codename": null,
+      "flavor": null,
+      "kind": "minirootfs",
+      "arch": "arm64",
+      "file": "alpine-minirootfs-3.23.8-aarch64.tar.gz",
+      "size_bytes": 4027855,
+      "size_human": "3.8 MB",
+      "available": true,
+      "source": "github",
+      "download_endpoint": "api/download/alpine/3.23.8.json",
+      "text_endpoint": "api/t/url/alpine/3.23.8.txt",
+      "direct_url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.23.8-aarch64.tar.gz",
+      "mirrors": [
+        "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.23.8-aarch64.tar.gz",
+        "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-minirootfs-3.23.8-aarch64.tar.gz"
+      ],
+      "tawcroot": "开箱即用。",
+      "note": "musl 与 glibc 不兼容。"
+    },
+    {
+      "version": "3.22.8",
+      "series": "v3.22",
+      "codename": null,
+      "flavor": null,
+      "kind": "minirootfs",
+      "arch": "arm64",
+      "file": "alpine-minirootfs-3.22.8-aarch64.tar.gz",
+      "size_bytes": 3971704,
+      "size_human": "3.8 MB",
+      "available": true,
+      "source": "github",
+      "download_endpoint": "api/download/alpine/3.22.8.json",
+      "text_endpoint": "api/t/url/alpine/3.22.8.txt",
+      "direct_url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.22.8-aarch64.tar.gz",
+      "mirrors": [
+        "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.22.8-aarch64.tar.gz",
+        "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-minirootfs-3.22.8-aarch64.tar.gz"
+      ],
+      "tawcroot": "开箱即用。",
+      "note": "musl 与 glibc 不兼容。"
+    },
+    {
+      "version": "3.21.10",
+      "series": "v3.21",
+      "codename": null,
+      "flavor": null,
+      "kind": "minirootfs",
+      "arch": "arm64",
+      "file": "alpine-minirootfs-3.21.10-aarch64.tar.gz",
+      "size_bytes": 3831092,
+      "size_human": "3.7 MB",
+      "available": true,
+      "source": "github",
+      "download_endpoint": "api/download/alpine/3.21.10.json",
+      "text_endpoint": "api/t/url/alpine/3.21.10.txt",
+      "direct_url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.21.10-aarch64.tar.gz",
+      "mirrors": [
+        "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.21.10-aarch64.tar.gz",
+        "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.10-aarch64.tar.gz"
+      ],
+      "tawcroot": "开箱即用。",
+      "note": "musl 与 glibc 不兼容。"
+    },
+    {
+      "version": "3.20.10",
+      "series": "v3.20",
+      "codename": null,
+      "flavor": null,
+      "kind": "minirootfs",
+      "arch": "arm64",
+      "file": "alpine-minirootfs-3.20.10-aarch64.tar.gz",
+      "size_bytes": 3952266,
+      "size_human": "3.8 MB",
+      "available": true,
+      "source": "github",
+      "download_endpoint": "api/download/alpine/3.20.10.json",
+      "text_endpoint": "api/t/url/alpine/3.20.10.txt",
+      "direct_url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.20.10-aarch64.tar.gz",
+      "mirrors": [
+        "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.20.10-aarch64.tar.gz",
+        "https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/aarch64/alpine-minirootfs-3.20.10-aarch64.tar.gz"
+      ],
+      "tawcroot": "开箱即用。",
+      "note": "musl 与 glibc 不兼容。"
+    },
+    {
+      "version": "3.19.9",
+      "series": "v3.19",
+      "codename": null,
+      "flavor": null,
+      "kind": "minirootfs",
+      "arch": "arm64",
+      "file": "alpine-minirootfs-3.19.9-aarch64.tar.gz",
+      "size_bytes": 3227138,
+      "size_human": "3.1 MB",
+      "available": true,
+      "source": "github",
+      "download_endpoint": "api/download/alpine/3.19.9.json",
+      "text_endpoint": "api/t/url/alpine/3.19.9.txt",
+      "direct_url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.19.9-aarch64.tar.gz",
+      "mirrors": [
+        "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.19.9-aarch64.tar.gz",
+        "https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/aarch64/alpine-minirootfs-3.19.9-aarch64.tar.gz"
+      ],
+      "tawcroot": "开箱即用。",
+      "note": "musl 与 glibc 不兼容。"
+    }
+  ]
+}

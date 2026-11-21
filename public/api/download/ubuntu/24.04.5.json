@@ -1,0 +1,22 @@
+{
+  "system": "ubuntu",
+  "system_name": "Ubuntu",
+  "version": "24.04.5",
+  "codename": "noble",
+  "flavor": null,
+  "arch": "arm64",
+  "file": "ubuntu-base-24.04.5-base-arm64.tar.gz",
+  "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz",
+  "source": "official",
+  "size_bytes": 29936675,
+  "size_human": "28.5 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz",
+    "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz"
+  ],
+  "checksum_url": "https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/SHA256SUMS",
+  "tawcroot": "glibc 2.39，含 clone3 等新调用，易触发 Bad system call。",
+  "note": "最新 LTS。"
+}

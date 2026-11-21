@@ -1,0 +1,1 @@
+https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.20.10-aarch64.tar.gz

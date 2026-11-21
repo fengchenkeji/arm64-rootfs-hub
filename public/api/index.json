@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "schema": "arm64-rootfs-hub/v2",
+    "verified_at": "2026-11-21T02:12:40+00:00",
+    "generated_at": "2026-11-21T02:12:40+00:00",
+    "counts": {
+      "systems": 7,
+      "versions": 18,
+      "available": 18
+    }
+  },
+  "text": {
+    "systems": "api/t/systems.txt",
+    "name": "api/t/names/{id}.txt",
+    "versions": "api/t/versions/{id}.txt",
+    "url": "api/t/url/{id}/{version}.txt",
+    "size": "api/t/size/{id}/{version}.txt",
+    "file": "api/t/file/{id}/{version}.txt",
+    "sha": "api/t/sha/{id}/{version}.txt",
+    "mirrors": "api/t/mirrors/{id}/{version}.txt"
+  },
+  "json": {
+    "all": "api/all.json",
+    "systems": "api/systems.json",
+    "system": "api/systems/{id}.json",
+    "download": "api/download/{id}/{version}.json"
+  },
+  "usage": [
+    "GET /api/t/systems.txt                 -> 每行一个发行版",
+    "GET /api/t/versions/debian.txt         -> 每行一个版本",
+    "GET /api/t/url/debian/12.txt           -> 一个直链（一个值）",
+    "GET /api/t/size/debian/12.txt          -> 一个字节数",
+    "GET /api/t/mirrors/debian/12.txt       -> 每行一个镜像"
+  ]
+}

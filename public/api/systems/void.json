@@ -1,0 +1,56 @@
+{
+  "id": "void",
+  "name": "Void Linux",
+  "libc": "glibc",
+  "package_manager": "xbps",
+  "rolling": true,
+  "description": "轻量、无 systemd，官方提供 glibc 与 musl 双版本 ROOTFS。",
+  "homepage": "https://voidlinux.org/",
+  "version_count": 2,
+  "versions": [
+    {
+      "version": "20250202",
+      "series": "20250202",
+      "codename": null,
+      "flavor": "glibc",
+      "kind": "rootfs",
+      "arch": "arm64",
+      "file": "void-aarch64-ROOTFS-20250202.tar.xz",
+      "size_bytes": 45789416,
+      "size_human": "43.7 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/void/20250202.json",
+      "text_endpoint": "api/t/url/void/20250202.txt",
+      "direct_url": "https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz",
+      "mirrors": [
+        "https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz",
+        "https://mirrors.tuna.tsinghua.edu.cn/voidlinux/live/current/void-aarch64-ROOTFS-20250202.tar.xz"
+      ],
+      "tawcroot": "glibc 版，syscall 较保守，兼容性接近 Debian 12。",
+      "note": "官方 ROOTFS tarball。"
+    },
+    {
+      "version": "20250202-musl",
+      "series": "20250202",
+      "codename": null,
+      "flavor": "musl",
+      "kind": "rootfs",
+      "arch": "arm64",
+      "file": "void-aarch64-musl-ROOTFS-20250202.tar.xz",
+      "size_bytes": 35854920,
+      "size_human": "34.2 MB",
+      "available": true,
+      "source": "official",
+      "download_endpoint": "api/download/void/20250202-musl.json",
+      "text_endpoint": "api/t/url/void/20250202-musl.txt",
+      "direct_url": "https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz",
+      "mirrors": [
+        "https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz",
+        "https://mirrors.tuna.tsinghua.edu.cn/voidlinux/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz"
+      ],
+      "tawcroot": "musl 版，syscall 面更小，比 glibc 版更稳。",
+      "note": "官方 musl ROOTFS tarball。"
+    }
+  ]
+}

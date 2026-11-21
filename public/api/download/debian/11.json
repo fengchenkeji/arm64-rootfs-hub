@@ -1,0 +1,21 @@
+{
+  "system": "debian",
+  "system_name": "Debian",
+  "version": "11",
+  "codename": "bullseye",
+  "flavor": null,
+  "arch": "arm64",
+  "file": "debian-11-genericcloud-arm64.tar.xz",
+  "url": "https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-arm64.tar.xz",
+  "source": "official",
+  "size_bytes": 163734624,
+  "size_human": "156.1 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-arm64.tar.xz"
+  ],
+  "checksum_url": "https://cloud.debian.org/images/cloud/bullseye/latest/SHA512SUMS",
+  "tawcroot": "glibc 2.31，兼容性最好，软件偏旧。",
+  "note": "旧版 LTS。"
+}

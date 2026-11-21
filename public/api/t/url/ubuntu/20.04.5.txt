@@ -1,0 +1,1 @@
+https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz

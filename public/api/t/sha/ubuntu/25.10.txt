@@ -1,0 +1,1 @@
+https://cdimage.ubuntu.com/ubuntu-base/releases/25.10/release/SHA256SUMS

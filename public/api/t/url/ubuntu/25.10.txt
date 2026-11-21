@@ -1,0 +1,1 @@
+https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz

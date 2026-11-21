@@ -1,0 +1,22 @@
+{
+  "system": "ubuntu",
+  "system_name": "Ubuntu",
+  "version": "20.04.5",
+  "codename": "focal",
+  "flavor": null,
+  "arch": "arm64",
+  "file": "ubuntu-base-20.04.5-base-arm64.tar.gz",
+  "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz",
+  "source": "official",
+  "size_bytes": 26257800,
+  "size_human": "25.0 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz",
+    "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz"
+  ],
+  "checksum_url": "https://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/SHA256SUMS",
+  "tawcroot": "glibc 2.31，兼容性拉满，软件版本较老。",
+  "note": "老旧 LTS。"
+}

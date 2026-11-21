@@ -1,0 +1,21 @@
+{
+  "system": "rocky",
+  "system_name": "Rocky Linux",
+  "version": "9-latest",
+  "codename": null,
+  "flavor": null,
+  "arch": "arm64",
+  "file": "Rocky-9-Container-Base.latest.aarch64.tar.xz",
+  "url": "https://download.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-Container-Base.latest.aarch64.tar.xz",
+  "source": "official",
+  "size_bytes": 66164672,
+  "size_human": "63.1 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://download.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-Container-Base.latest.aarch64.tar.xz"
+  ],
+  "checksum_url": null,
+  "tawcroot": "glibc 2.34；容器 tar 布局需先展开再当 rootfs 用。",
+  "note": "容器根文件系统 tar（docker import 格式）。"
+}

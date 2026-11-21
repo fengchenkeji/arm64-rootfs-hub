@@ -1,0 +1,22 @@
+{
+  "system": "void",
+  "system_name": "Void Linux",
+  "version": "20250202-musl",
+  "codename": null,
+  "flavor": "musl",
+  "arch": "arm64",
+  "file": "void-aarch64-musl-ROOTFS-20250202.tar.xz",
+  "url": "https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz",
+  "source": "official",
+  "size_bytes": 35854920,
+  "size_human": "34.2 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz",
+    "https://mirrors.tuna.tsinghua.edu.cn/voidlinux/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz"
+  ],
+  "checksum_url": "https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz.sha256",
+  "tawcroot": "musl 版，syscall 面更小，比 glibc 版更稳。",
+  "note": "官方 musl ROOTFS tarball。"
+}

@@ -1,0 +1,22 @@
+{
+  "system": "void",
+  "system_name": "Void Linux",
+  "version": "20250202",
+  "codename": null,
+  "flavor": "glibc",
+  "arch": "arm64",
+  "file": "void-aarch64-ROOTFS-20250202.tar.xz",
+  "url": "https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz",
+  "source": "official",
+  "size_bytes": 45789416,
+  "size_human": "43.7 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz",
+    "https://mirrors.tuna.tsinghua.edu.cn/voidlinux/live/current/void-aarch64-ROOTFS-20250202.tar.xz"
+  ],
+  "checksum_url": "https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz.sha256",
+  "tawcroot": "glibc 版，syscall 较保守，兼容性接近 Debian 12。",
+  "note": "官方 ROOTFS tarball。"
+}

@@ -1,0 +1,1 @@
+https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz.sha256

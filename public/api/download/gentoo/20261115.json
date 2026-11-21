@@ -1,0 +1,21 @@
+{
+  "system": "gentoo",
+  "system_name": "Gentoo",
+  "version": "20261115",
+  "codename": null,
+  "flavor": null,
+  "arch": "arm64",
+  "file": "stage3-arm64-openrc-20261115T234600Z.tar.xz",
+  "url": "https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz",
+  "source": "official",
+  "size_bytes": 246978772,
+  "size_human": "235.5 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz"
+  ],
+  "checksum_url": "https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz.sha256",
+  "tawcroot": "stage3 仅为起点，需自行 emerge；缺 profile 时部分命令不可用。",
+  "note": "stage3 openrc，非开箱即用 rootfs。"
+}

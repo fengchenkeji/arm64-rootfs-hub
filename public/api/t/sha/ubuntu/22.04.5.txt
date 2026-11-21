@@ -1,0 +1,1 @@
+https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/SHA256SUMS

@@ -1,0 +1,22 @@
+{
+  "system": "alpine",
+  "system_name": "Alpine Linux",
+  "version": "3.19.9",
+  "codename": null,
+  "flavor": null,
+  "arch": "arm64",
+  "file": "alpine-minirootfs-3.19.9-aarch64.tar.gz",
+  "url": "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.19.9-aarch64.tar.gz",
+  "source": "github",
+  "size_bytes": 3227138,
+  "size_human": "3.1 MB",
+  "available": true,
+  "verified_at": "2026-11-21T02:12:40+00:00",
+  "mirrors": [
+    "https://github.com/fengchenkeji/arm64-rootfs-hub/releases/download/rootfs-mirror/alpine-minirootfs-3.19.9-aarch64.tar.gz",
+    "https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/aarch64/alpine-minirootfs-3.19.9-aarch64.tar.gz"
+  ],
+  "checksum_url": "https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/aarch64/alpine-minirootfs-3.19.9-aarch64.tar.gz.sha256",
+  "tawcroot": "开箱即用。",
+  "note": "musl 与 glibc 不兼容。"
+}
