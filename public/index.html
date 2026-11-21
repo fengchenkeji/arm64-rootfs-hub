@@ -205,19 +205,21 @@ function render(){
 
 function renderApi(){
   const origin = location.origin + BASE;
+  const worker = 'https://arm64-rootfs-hub.399233159.workers.dev';
   document.getElementById('apiblock').textContent =
-`# 一次请求 -> 一个值（纯文本，最省事）
-GET ${origin}/api/t/systems.txt              # 每行一个发行版
-GET ${origin}/api/t/versions/debian.txt      # 每行一个版本
-GET ${origin}/api/t/url/debian/12.txt        # 一个直链
-GET ${origin}/api/t/size/debian/12.txt       # 一个字节数
-GET ${origin}/api/t/mirrors/debian/12.txt    # 每行一个镜像
+`# JS 后端（Cloudflare Worker，真正的按参数返回）
+GET ${worker}/?q=list                       # 每行一个发行版
+GET ${worker}/?q=count                      # 一个数字
+GET ${worker}/?q=versions&s=debian          # 每行一个版本
+GET ${worker}/?q=url&s=debian&v=12          # 一个直链（一个值）
+GET ${worker}/?q=size&s=debian&v=12         # 一个字节数
+GET ${worker}/?q=mirrors&s=alpine&v=3.24.4  # 每行一个镜像
 
-# 带结构的 JSON（同上数据，多字段）
-GET ${origin}/api/systems.json
-GET ${origin}/api/systems/debian.json
-GET ${origin}/api/download/debian/12.json
-GET ${origin}/api/all.json`;
+# 静态文件 API（同一个数据源，无需后端也能用）
+GET ${origin}/api/t/systems.txt              # 每行一个发行版
+GET ${origin}/api/t/url/debian/12.txt        # 一个直链
+GET ${origin}/api/systems.json               # 结构化列表
+GET ${origin}/api/all.json                   # 全量`;
 }
 
 fetch(API + '/all.json')

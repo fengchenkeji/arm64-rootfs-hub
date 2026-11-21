@@ -148,3 +148,13 @@ npx wrangler deploy           # 推到 Workers
 CI：`.github/workflows/deploy-worker.yml`，需要仓库 Secrets
 `CF_API_TOKEN`（Workers 编辑权限）+ `CF_ACCOUNT_ID`；未配置自动跳过。
 
+## 八、已上线地址
+
+- 静态站（GitHub Pages）：`https://fengchenkeji.github.io/arm64-rootfs-hub/`
+- JS 后端（Cloudflare Worker）：`https://arm64-rootfs-hub.399233159.workers.dev`
+
+```bash
+API=https://arm64-rootfs-hub.399233159.workers.dev
+curl "$API/?q=list"
+curl "$API/?q=url&s=debian&v=12"
+```
