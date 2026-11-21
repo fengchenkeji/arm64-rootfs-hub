@@ -206,20 +206,25 @@ function render(){
 function renderApi(){
   const origin = location.origin + BASE;
   const worker = 'https://arm64-rootfs-hub.399233159.workers.dev';
+  const cdn = 'https://cdn.jsdelivr.net/gh/fengchenkeji/arm64-rootfs-hub@main/public';
   document.getElementById('apiblock').textContent =
-`# JS 后端（Cloudflare Worker，真正的按参数返回）
-GET ${worker}/?q=list                       # 每行一个发行版
-GET ${worker}/?q=count                      # 一个数字
-GET ${worker}/?q=versions&s=debian          # 每行一个版本
-GET ${worker}/?q=url&s=debian&v=12          # 一个直链（一个值）
-GET ${worker}/?q=size&s=debian&v=12         # 一个字节数
-GET ${worker}/?q=mirrors&s=alpine&v=3.24.4  # 每行一个镜像
+`# 国内可用：jsDelivr CDN（一个文件 = 一个值）
+GET ${cdn}/api/t/systems.txt                 # 每行一个发行版
+GET ${cdn}/api/t/versions/debian.txt         # 每行一个版本
+GET ${cdn}/api/t/url/debian/12.txt           # 一个直链
+GET ${cdn}/api/t/size/debian/12.txt          # 一个字节数
+GET ${cdn}/api/systems.json                  # 结构化列表
 
-# 静态文件 API（同一个数据源，无需后端也能用）
-GET ${origin}/api/t/systems.txt              # 每行一个发行版
-GET ${origin}/api/t/url/debian/12.txt        # 一个直链
-GET ${origin}/api/systems.json               # 结构化列表
-GET ${origin}/api/all.json                   # 全量`;
+# 国内备用：gh-proxy 转发（同上路径）
+GET https://gh-proxy.com/https://raw.githubusercontent.com/fengchenkeji/arm64-rootfs-hub/main/public/api/t/url/debian/12.txt
+
+# JS 后端（Cloudflare Worker，境外/代理环境）
+GET ${worker}/?q=list
+GET ${worker}/?q=versions&s=debian
+GET ${worker}/?q=url&s=debian&v=12
+
+# 静态站（GitHub Pages）
+GET ${origin}/api/t/url/debian/12.txt`;
 }
 
 fetch(API + '/all.json')

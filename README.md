@@ -158,3 +158,28 @@ API=https://arm64-rootfs-hub.399233159.workers.dev
 curl "$API/?q=list"
 curl "$API/?q=url&s=debian&v=12"
 ```
+
+## 九、国内访问
+
+`*.workers.dev` 与 GitHub Pages 在国内网络下都经常不可达。已提交生成的 `public/api/`，
+所以可以走国内 CDN 直接取“一个请求一个值”：
+
+| 通道 | 示例 |
+|---|---|
+| **jsDelivr**（首选） | `https://cdn.jsdelivr.net/gh/fengchenkeji/arm64-rootfs-hub@main/public/api/t/url/debian/12.txt` |
+| gh-proxy | `https://gh-proxy.com/https://raw.githubusercontent.com/fengchenkeji/arm64-rootfs-hub/main/public/api/t/url/debian/12.txt` |
+| ghfast | `https://ghfast.top/https://raw.githubusercontent.com/.../public/api/t/url/debian/12.txt` |
+| Pages / Worker | 境外或代理环境 |
+
+```bash
+CDN=https://cdn.jsdelivr.net/gh/fengchenkeji/arm64-rootfs-hub@main/public
+curl "$CDN/api/t/systems.txt"
+URL=$(curl -s "$CDN/api/t/url/debian/12.txt") && curl -LO "$URL"
+```
+
+整个页面也能走 jsDelivr 打开：`https://cdn.jsdelivr.net/gh/fengchenkeji/arm64-rootfs-hub@main/public/index.html`
+（页面内部按路径推导 API 前缀，所以 CDN 下同样能加载数据）。
+
+> 真正的“带参数 JS 后端”在境内只能放在境内云函数 / 自有 VPS（`workers.dev` 无解）。
+> 静态 CDN 已满足“一个请求返回一个值”，只是参数换成路径。
+
