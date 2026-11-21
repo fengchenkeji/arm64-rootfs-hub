@@ -1,0 +1,84 @@
+name: Mirror to GitHub Release
+
+# 把选中的 rootfs 下载下来，算 sha256，再作为 GitHub Release 资产发布，
+# 供站点当作「GitHub 镜像」使用。
+# 手动触发，可指定发行版，避免一次拉几百 MB。
+
+on:
+  workflow_dispatch:
+    inputs:
+      systems:
+        description: "发行版 id，逗号分隔（alpine,ubuntu,debian / all）"
+        required: true
+        default: "alpine"
+      max_mb:
+        description: "单个文件体积上限（MB），超过则跳过，防止撑爆额度"
+        required: false
+        default: "400"
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download selected assets
+        env:
+          SYSTEMS: ${{ inputs.systems }}
+          MAX_MB: ${{ inputs.max_mb }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, urllib.request
+          catalog = json.loads(pathlib.Path("data/catalog.json").read_text())
+          want = os.environ["SYSTEMS"].strip()
+          limit = int(os.environ["MAX_MB"]) * 1024 * 1024
+          out = pathlib.Path("assets"); out.mkdir(exist_ok=True)
+          picked = 0
+          for s in catalog["systems"]:
+              if want != "all" and s["id"] not in [x.strip() for x in want.split(",")]:
+                  continue
+              for v in s["versions"]:
+                  dst = out / v["file"]
+                  if dst.exists():
+                      continue
+                  req = urllib.request.Request(v["url"], headers={"User-Agent": "rootfs-hub-mirror"})
+                  with urllib.request.urlopen(req, timeout=120) as r:
+                      size = r.headers.get("Content-Length")
+                      if size and int(size) > limit:
+                          print(f"skip too big: {v['file']} ({int(size)//1024//1024} MB)")
+                          continue
+                      data = r.read()
+                  dst.write_bytes(data)
+                  print(f"fetched {v['file']} {len(data)//1024//1024} MB")
+                  picked += 1
+          print(f"total picked: {picked}")
+          PY
+
+      - name: Checksums
+        run: |
+          cd assets
+          for f in *; do [ -f "$f" ] && sha256sum "$f" >> SHA256SUMS; done || true
+          cat SHA256SUMS 2>/dev/null || true
+          du -sh .
+
+      - name: Publish to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: rootfs-mirror
+          name: "rootfs-mirror (arm64)"
+          body: |
+            arm64 rootfs GitHub 镜像资产。
+            由 `.github/workflows/mirror-github.yml` 自动下载并发布，供
+            `https://<owner>.github.io/arm64-rootfs-hub/` 的 API 作为镜像源使用。
+          files: |
+            assets/*
+            assets/SHA256SUMS
+          fail_on_unmatched_files: false
+          overwrite_files: true

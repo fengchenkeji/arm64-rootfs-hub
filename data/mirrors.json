@@ -1,0 +1,15 @@
+{
+  "_comment": "镜像配置。enabled=true 后，构建脚本会为每个版本拼出镜像 URL 并实际探测；探测通过才出现在 API 里。",
+  "github": {
+    "enabled": true,
+    "owner": "fengchenkeji",
+    "repo": "arm64-rootfs-hub",
+    "release_tag": "rootfs-mirror",
+    "url_template": "https://github.com/{owner}/{repo}/releases/download/{tag}/{file}"
+  },
+  "cloudflare": {
+    "enabled": false,
+    "url_template": "https://rootfs.example.com/{file}",
+    "_hint": "把 rootfs.example.com 换成你的 R2 自定义域名 / Worker 路由；上传用 scripts/push_r2.sh 或 cloudflare workflow。"
+  }
+}

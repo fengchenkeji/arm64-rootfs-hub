@@ -1,0 +1,94 @@
+name: Mirror to Cloudflare R2
+
+# 把 rootfs 上传到你自己的 Cloudflare R2（S3 兼容端点），
+# 之后在 data/mirrors.json 把 cloudflare.enabled 设为 true 并填域名，
+# 构建时就会自动探测并把这些地址作为首选下载源。
+#
+# 需要的仓库 Secrets：
+#   R2_ENDPOINT            https://<accountid>.r2.cloudflarestorage.com
+#   R2_BUCKET              桶名
+#   R2_ACCESS_KEY_ID
+#   R2_SECRET_ACCESS_KEY
+#   R2_PUBLIC_BASE         可选，自定义域名/Worker 前缀，仅用于打印结果
+# Secrets 未配置时本 workflow 会安全跳过（不会失败）。
+
+on:
+  workflow_dispatch:
+    inputs:
+      systems:
+        description: "发行版 id，逗号分隔，或 all"
+        required: true
+        default: "alpine"
+      max_mb:
+        description: "单个文件体积上限（MB）"
+        required: false
+        default: "400"
+
+permissions:
+  contents: read
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      R2_PUBLIC_BASE: ${{ secrets.R2_PUBLIC_BASE }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check configuration
+        id: cfg
+        run: |
+          if [ -z "$R2_ENDPOINT" ] || [ -z "$R2_BUCKET" ]; then
+            echo "ready=false" >> $GITHUB_OUTPUT
+            echo "::notice::R2 secrets 未配置，跳过 Cloudflare 镜像上传"
+          else
+            echo "ready=true" >> $GITHUB_OUTPUT
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.cfg.outputs.ready == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Install awscli
+        if: steps.cfg.outputs.ready == 'true'
+        run: pip install awscli
+
+      - name: Download and upload
+        if: steps.cfg.outputs.ready == 'true'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          SYSTEMS: ${{ inputs.systems }}
+          MAX_MB: ${{ inputs.max_mb }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, pathlib, urllib.request
+          catalog = json.loads(pathlib.Path("data/catalog.json").read_text())
+          want = os.environ["SYSTEMS"].strip()
+          limit = int(os.environ["MAX_MB"]) * 1024 * 1024
+          out = pathlib.Path("assets"); out.mkdir(exist_ok=True)
+          for s in catalog["systems"]:
+              if want != "all" and s["id"] not in [x.strip() for x in want.split(",")]:
+                  continue
+              for v in s["versions"]:
+                  dst = out / v["file"]
+                  if dst.exists():
+                      continue
+                  req = urllib.request.Request(v["url"], headers={"User-Agent": "rootfs-hub-mirror"})
+                  with urllib.request.urlopen(req, timeout=120) as r:
+                      size = r.headers.get("Content-Length")
+                      if size and int(size) > limit:
+                          print(f"skip too big: {v['file']}")
+                          continue
+                      dst.write_bytes(r.read())
+                  print("fetched", v["file"])
+          PY
+          aws s3 sync assets "s3://$R2_BUCKET/" \
+            --endpoint-url "$R2_ENDPOINT" \
+            --checksum-algorithm CRC32
+          echo "done. public base: ${R2_PUBLIC_BASE:-<not set>}"

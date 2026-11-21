@@ -169,6 +169,10 @@ function render(){
             <div class="act">
               <a class="btn primary ${v.download.available ? '' : 'down'}"
                  href="${esc(direct)}" rel="noopener" download>下载</a>
+              ${(v.mirrors||[]).map(u => {
+                  const tag = /github\.com/i.test(u) ? 'GH' : 'CF';
+                  return `<a class="btn" href="${esc(u)}" rel="noopener" download>${tag} 镜像</a>`;
+                }).join('')}
               <button class="btn" data-copy="curl -L -O ${esc(direct)}">复制 curl</button>
               <a class="btn" href="${esc(dl)}" target="_blank" rel="noopener">JSON</a>
             </div>
@@ -202,16 +206,17 @@ function render(){
 function renderApi(){
   const origin = location.origin + BASE;
   document.getElementById('apiblock').textContent =
-`# 发行版列表
+`# 一次请求 -> 一个值（纯文本，最省事）
+GET ${origin}/api/t/systems.txt              # 每行一个发行版
+GET ${origin}/api/t/versions/debian.txt      # 每行一个版本
+GET ${origin}/api/t/url/debian/12.txt        # 一个直链
+GET ${origin}/api/t/size/debian/12.txt       # 一个字节数
+GET ${origin}/api/t/mirrors/debian/12.txt    # 每行一个镜像
+
+# 带结构的 JSON（同上数据，多字段）
 GET ${origin}/api/systems.json
-
-# 指定发行版的所有版本
 GET ${origin}/api/systems/debian.json
-
-# 指定版本的下载信息（含体积、镜像、校验文件）
-GET ${origin}/api/download/ubuntu/22.04.5.json
-
-# 全量目录（一次拿全部）
+GET ${origin}/api/download/debian/12.json
 GET ${origin}/api/all.json`;
 }
 

@@ -1,7 +1,6 @@
 {
-  "schema": "arm64-rootfs-hub/v1",
+  "schema": "arm64-rootfs-hub/v2",
   "arch": "arm64",
-  "family_default": "linux",
   "systems": [
     {
       "id": "alpine",
@@ -9,127 +8,15 @@
       "libc": "musl",
       "package_manager": "apk",
       "rolling": false,
-      "description": "musl libc，最小体积，系统调用极简，tawcroot 下兼容性最好。",
+      "description": "musl libc，体积最小，syscall 极简，tawcroot 下兼容性最好。",
       "homepage": "https://alpinelinux.org/",
       "versions": [
-        {
-          "version": "3.24.4",
-          "series": "v3.24",
-          "codename": null,
-          "kind": "minirootfs",
-          "file": "alpine-minirootfs-3.24.4-aarch64.tar.gz",
-          "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz",
-          "mirrors": [
-            "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz",
-            "https://mirrors.ustc.edu.cn/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz"
-          ],
-          "checksums": "https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz.sha256",
-          "tawcroot": "开箱即用；musl 程序 syscall 面最小，几乎不触发 Bad system call。",
-          "note": "musl 与 glibc 不兼容，不能直接跑 Qt/glibc 二进制。"
-        },
-        {
-          "version": "3.23.8",
-          "series": "v3.23",
-          "codename": null,
-          "kind": "minirootfs",
-          "file": "alpine-minirootfs-3.23.8-aarch64.tar.gz",
-          "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-minirootfs-3.23.8-aarch64.tar.gz",
-          "mirrors": [
-            "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.23/releases/aarch64/alpine-minirootfs-3.23.8-aarch64.tar.gz"
-          ],
-          "checksums": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-minirootfs-3.23.8-aarch64.tar.gz.sha256",
-          "tawcroot": "开箱即用。",
-          "note": "musl 与 glibc 不兼容。"
-        },
-        {
-          "version": "3.22.8",
-          "series": "v3.22",
-          "codename": null,
-          "kind": "minirootfs",
-          "file": "alpine-minirootfs-3.22.8-aarch64.tar.gz",
-          "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-minirootfs-3.22.8-aarch64.tar.gz",
-          "mirrors": [
-            "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.22/releases/aarch64/alpine-minirootfs-3.22.8-aarch64.tar.gz"
-          ],
-          "checksums": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-minirootfs-3.22.8-aarch64.tar.gz.sha256",
-          "tawcroot": "开箱即用。",
-          "note": "musl 与 glibc 不兼容。"
-        },
-        {
-          "version": "3.21.10",
-          "series": "v3.21",
-          "codename": null,
-          "kind": "minirootfs",
-          "file": "alpine-minirootfs-3.21.10-aarch64.tar.gz",
-          "url": "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.10-aarch64.tar.gz",
-          "mirrors": [
-            "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.10-aarch64.tar.gz"
-          ],
-          "checksums": "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.10-aarch64.tar.gz.sha256",
-          "tawcroot": "开箱即用。",
-          "note": "musl 与 glibc 不兼容。"
-        },
-        {
-          "version": "3.20.10",
-          "series": "v3.20",
-          "codename": null,
-          "kind": "minirootfs",
-          "file": "alpine-minirootfs-3.20.10-aarch64.tar.gz",
-          "url": "https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/aarch64/alpine-minirootfs-3.20.10-aarch64.tar.gz",
-          "mirrors": [
-            "https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.20/releases/aarch64/alpine-minirootfs-3.20.10-aarch64.tar.gz"
-          ],
-          "checksums": "https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/aarch64/alpine-minirootfs-3.20.10-aarch64.tar.gz.sha256",
-          "tawcroot": "开箱即用。",
-          "note": "musl 与 glibc 不兼容。"
-        }
-      ]
-    },
-    {
-      "id": "debian",
-      "name": "Debian",
-      "libc": "glibc",
-      "package_manager": "apt",
-      "rolling": false,
-      "description": "glibc 版本保守、系统调用稳定，tawcroot 下最稳的 glibc 发行版。",
-      "homepage": "https://www.debian.org/",
-      "versions": [
-        {
-          "version": "13",
-          "series": "trixie",
-          "codename": "trixie",
-          "kind": "genericcloud",
-          "file": "debian-13-genericcloud-arm64.tar.xz",
-          "url": "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-arm64.tar.xz",
-          "mirrors": [],
-          "checksums": "https://cloud.debian.org/images/cloud/trixie/latest/SHA512SUMS",
-          "tawcroot": "glibc 2.41，少量新 syscall，多数命令可用。",
-          "note": "官方云镜像 tar 包，解压即得 rootfs。"
-        },
-        {
-          "version": "12",
-          "series": "bookworm",
-          "codename": "bookworm",
-          "kind": "genericcloud",
-          "file": "debian-12-genericcloud-arm64.tar.xz",
-          "url": "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-arm64.tar.xz",
-          "mirrors": [],
-          "checksums": "https://cloud.debian.org/images/cloud/bookworm/latest/SHA512SUMS",
-          "tawcroot": "glibc 2.36，推荐：稳定性与软件新旧的最佳平衡点。",
-          "note": "官方云镜像 tar 包，解压即得 rootfs。"
-        },
-        {
-          "version": "11",
-          "series": "bullseye",
-          "codename": "bullseye",
-          "kind": "genericcloud",
-          "file": "debian-11-genericcloud-arm64.tar.xz",
-          "url": "https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-arm64.tar.xz",
-          "mirrors": [],
-          "checksums": "https://cloud.debian.org/images/cloud/bullseye/latest/SHA512SUMS",
-          "tawcroot": "glibc 2.31，兼容性最好，软件偏旧。",
-          "note": "已进入 LTS 后期，官方源逐步收敛。"
-        }
+        {"version":"3.24.4","series":"v3.24","kind":"minirootfs","file":"alpine-minirootfs-3.24.4-aarch64.tar.gz","url":"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz","mirrors":[],"checksums":"https://dl-cdn.alpinelinux.org/alpine/v3.24/releases/aarch64/alpine-minirootfs-3.24.4-aarch64.tar.gz.sha256","tawcroot":"开箱即用；musl 程序 syscall 面最小。","note":"musl 与 glibc 不兼容，跑不了 Qt/glibc 二进制。"},
+        {"version":"3.23.8","series":"v3.23","kind":"minirootfs","file":"alpine-minirootfs-3.23.8-aarch64.tar.gz","url":"https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-minirootfs-3.23.8-aarch64.tar.gz","mirrors":[],"checksums":"https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/aarch64/alpine-minirootfs-3.23.8-aarch64.tar.gz.sha256","tawcroot":"开箱即用。","note":"musl 与 glibc 不兼容。"},
+        {"version":"3.22.8","series":"v3.22","kind":"minirootfs","file":"alpine-minirootfs-3.22.8-aarch64.tar.gz","url":"https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-minirootfs-3.22.8-aarch64.tar.gz","mirrors":[],"checksums":"https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/alpine-minirootfs-3.22.8-aarch64.tar.gz.sha256","tawcroot":"开箱即用。","note":"musl 与 glibc 不兼容。"},
+        {"version":"3.21.10","series":"v3.21","kind":"minirootfs","file":"alpine-minirootfs-3.21.10-aarch64.tar.gz","url":"https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.10-aarch64.tar.gz","mirrors":[],"checksums":"https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.10-aarch64.tar.gz.sha256","tawcroot":"开箱即用。","note":"musl 与 glibc 不兼容。"},
+        {"version":"3.20.10","series":"v3.20","kind":"minirootfs","file":"alpine-minirootfs-3.20.10-aarch64.tar.gz","url":"https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/aarch64/alpine-minirootfs-3.20.10-aarch64.tar.gz","mirrors":[],"checksums":"https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/aarch64/alpine-minirootfs-3.20.10-aarch64.tar.gz.sha256","tawcroot":"开箱即用。","note":"musl 与 glibc 不兼容。"},
+        {"version":"3.19.9","series":"v3.19","kind":"minirootfs","file":"alpine-minirootfs-3.19.9-aarch64.tar.gz","url":"https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/aarch64/alpine-minirootfs-3.19.9-aarch64.tar.gz","mirrors":[],"checksums":"https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/aarch64/alpine-minirootfs-3.19.9-aarch64.tar.gz.sha256","tawcroot":"开箱即用。","note":"musl 与 glibc 不兼容。"}
       ]
     },
     {
@@ -141,66 +28,24 @@
       "description": "生态与文档最完善；版本越新 glibc 越激进，tawcroot 兼容压力越大。",
       "homepage": "https://ubuntu.com/",
       "versions": [
-        {
-          "version": "25.10",
-          "series": "questing",
-          "codename": "questing",
-          "kind": "base",
-          "file": "ubuntu-base-25.10-base-arm64.tar.gz",
-          "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz",
-          "mirrors": [
-            "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz",
-            "https://cdimage.ubuntu.com/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz"
-          ],
-          "checksums": "https://cdimage.ubuntu.com/ubuntu-base/releases/25.10/release/SHA256SUMS",
-          "tawcroot": "glibc 最新，新 syscall 多，tawcroot 下高频 Bad system call。",
-          "note": "非 LTS。"
-        },
-        {
-          "version": "24.04.5",
-          "series": "24.04",
-          "codename": "noble",
-          "kind": "base",
-          "file": "ubuntu-base-24.04.5-base-arm64.tar.gz",
-          "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz",
-          "mirrors": [
-            "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz",
-            "https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz"
-          ],
-          "checksums": "https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/SHA256SUMS",
-          "tawcroot": "glibc 2.39，含 clone3 等新调用，易触发 Bad system call。",
-          "note": "最新 LTS。"
-        },
-        {
-          "version": "22.04.5",
-          "series": "22.04",
-          "codename": "jammy",
-          "kind": "base",
-          "file": "ubuntu-base-22.04.5-base-arm64.tar.gz",
-          "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz",
-          "mirrors": [
-            "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz",
-            "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz"
-          ],
-          "checksums": "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/SHA256SUMS",
-          "tawcroot": "glibc 2.35，兼容与特性平衡，proot / tawcroot 通用首选。",
-          "note": "主流 LTS。"
-        },
-        {
-          "version": "20.04.5",
-          "series": "20.04",
-          "codename": "focal",
-          "kind": "base",
-          "file": "ubuntu-base-20.04.5-base-arm64.tar.gz",
-          "url": "https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz",
-          "mirrors": [
-            "https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz",
-            "https://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz"
-          ],
-          "checksums": "https://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/SHA256SUMS",
-          "tawcroot": "glibc 2.31，兼容性拉满，软件版本较老。",
-          "note": "老旧 LTS。"
-        }
+        {"version":"25.10","series":"questing","codename":"questing","kind":"base","file":"ubuntu-base-25.10-base-arm64.tar.gz","url":"https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz","mirrors":["https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz","https://cdimage.ubuntu.com/ubuntu-base/releases/25.10/release/ubuntu-base-25.10-base-arm64.tar.gz"],"checksums":"https://cdimage.ubuntu.com/ubuntu-base/releases/25.10/release/SHA256SUMS","tawcroot":"glibc 最新，新 syscall 多，高频 Bad system call。","note":"非 LTS。"},
+        {"version":"24.04.5","series":"24.04","codename":"noble","kind":"base","file":"ubuntu-base-24.04.5-base-arm64.tar.gz","url":"https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz","mirrors":["https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz","https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-arm64.tar.gz"],"checksums":"https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/SHA256SUMS","tawcroot":"glibc 2.39，含 clone3 等新调用，易触发 Bad system call。","note":"最新 LTS。"},
+        {"version":"22.04.5","series":"22.04","codename":"jammy","kind":"base","file":"ubuntu-base-22.04.5-base-arm64.tar.gz","url":"https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz","mirrors":["https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz","https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04.5-base-arm64.tar.gz"],"checksums":"https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/SHA256SUMS","tawcroot":"glibc 2.35，兼容与特性平衡，proot / tawcroot 通用首选。","note":"主流 LTS。"},
+        {"version":"20.04.5","series":"20.04","codename":"focal","kind":"base","file":"ubuntu-base-20.04.5-base-arm64.tar.gz","url":"https://mirrors.aliyun.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz","mirrors":["https://mirrors.huaweicloud.com/ubuntu-cdimage/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz","https://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.5-base-arm64.tar.gz"],"checksums":"https://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/SHA256SUMS","tawcroot":"glibc 2.31，兼容性拉满，软件版本较老。","note":"老旧 LTS。"}
+      ]
+    },
+    {
+      "id": "debian",
+      "name": "Debian",
+      "libc": "glibc",
+      "package_manager": "apt",
+      "rolling": false,
+      "description": "glibc 保守、syscall 稳定，tawcroot 下最稳的 glibc 发行版。",
+      "homepage": "https://www.debian.org/",
+      "versions": [
+        {"version":"13","series":"trixie","codename":"trixie","kind":"genericcloud","file":"debian-13-genericcloud-arm64.tar.xz","url":"https://cloud.debian.org/images/cloud/trixie/latest/debian-13-genericcloud-arm64.tar.xz","mirrors":[],"checksums":"https://cloud.debian.org/images/cloud/trixie/latest/SHA512SUMS","tawcroot":"glibc 2.41，少量新 syscall，多数命令可用。","note":"官方云镜像 tar 包。"},
+        {"version":"12","series":"bookworm","codename":"bookworm","kind":"genericcloud","file":"debian-12-genericcloud-arm64.tar.xz","url":"https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-arm64.tar.xz","mirrors":[],"checksums":"https://cloud.debian.org/images/cloud/bookworm/latest/SHA512SUMS","tawcroot":"glibc 2.36，推荐：稳定性与软件新旧最佳平衡。","note":"当前稳定 LTS。"},
+        {"version":"11","series":"bullseye","codename":"bullseye","kind":"genericcloud","file":"debian-11-genericcloud-arm64.tar.xz","url":"https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-genericcloud-arm64.tar.xz","mirrors":[],"checksums":"https://cloud.debian.org/images/cloud/bullseye/latest/SHA512SUMS","tawcroot":"glibc 2.31，兼容性最好，软件偏旧。","note":"旧版 LTS。"}
       ]
     },
     {
@@ -209,24 +54,47 @@
       "libc": "glibc",
       "package_manager": "pacman",
       "rolling": true,
-      "description": "滚动发行，软件最新；TAWC 项目原生适配的默认发行版。",
+      "description": "滚动发行，软件最新；TAWC 原生适配的默认发行版。",
       "homepage": "https://archlinuxarm.org/",
       "versions": [
-        {
-          "version": "latest",
-          "series": "rolling",
-          "codename": null,
-          "kind": "generic",
-          "file": "ArchLinuxARM-aarch64-latest.tar.gz",
-          "url": "https://mirrors.aliyun.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz",
-          "mirrors": [
-            "https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz",
-            "http://mirror.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz"
-          ],
-          "checksums": null,
-          "tawcroot": "配合 TAWC 合成器体验最佳；滚动 glibc 较新，个别 syscall 需补适配。",
-          "note": "每日滚动构建，无历史版本。"
-        }
+        {"version":"latest","series":"rolling","kind":"generic","file":"ArchLinuxARM-aarch64-latest.tar.gz","url":"https://mirrors.aliyun.com/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz","mirrors":["https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz","http://mirror.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz"],"checksums":null,"tawcroot":"配合 TAWC 合成器体验最佳；滚动 glibc 较新，个别 syscall 需补适配。","note":"每日滚动构建，无历史版本。"}
+      ]
+    },
+    {
+      "id": "void",
+      "name": "Void Linux",
+      "libc": "glibc",
+      "package_manager": "xbps",
+      "rolling": true,
+      "description": "轻量、无 systemd，官方提供 glibc 与 musl 双版本 ROOTFS。",
+      "homepage": "https://voidlinux.org/",
+      "versions": [
+        {"version":"20250202","series":"20250202","flavor":"glibc","kind":"rootfs","file":"void-aarch64-ROOTFS-20250202.tar.xz","url":"https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz","mirrors":["https://mirrors.tuna.tsinghua.edu.cn/voidlinux/live/current/void-aarch64-ROOTFS-20250202.tar.xz"],"checksums":"https://repo-default.voidlinux.org/live/current/void-aarch64-ROOTFS-20250202.tar.xz.sha256","tawcroot":"glibc 版，syscall 较保守，兼容性接近 Debian 12。","note":"官方 ROOTFS tarball。"},
+        {"version":"20250202-musl","series":"20250202","flavor":"musl","kind":"rootfs","file":"void-aarch64-musl-ROOTFS-20250202.tar.xz","url":"https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz","mirrors":["https://mirrors.tuna.tsinghua.edu.cn/voidlinux/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz"],"checksums":"https://repo-default.voidlinux.org/live/current/void-aarch64-musl-ROOTFS-20250202.tar.xz.sha256","tawcroot":"musl 版，syscall 面更小，比 glibc 版更稳。","note":"官方 musl ROOTFS tarball。"}
+      ]
+    },
+    {
+      "id": "gentoo",
+      "name": "Gentoo",
+      "libc": "glibc",
+      "package_manager": "emerge",
+      "rolling": true,
+      "description": "源码级发行版，官方 stage3 可作为 rootfs 起点（需自行配置 profile）。",
+      "homepage": "https://www.gentoo.org/",
+      "versions": [
+        {"version":"20261115","series":"autobuilds","kind":"stage3","file":"stage3-arm64-openrc-20261115T234600Z.tar.xz","url":"https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz","mirrors":[],"checksums":"https://distfiles.gentoo.org/releases/arm64/autobuilds/current-stage3-arm64-openrc/stage3-arm64-openrc-20261115T234600Z.tar.xz.sha256","tawcroot":"stage3 仅为起点，需自行 emerge；缺 profile 时部分命令不可用。","note":"stage3 openrc，非开箱即用 rootfs。"}
+      ]
+    },
+    {
+      "id": "rocky",
+      "name": "Rocky Linux",
+      "libc": "glibc",
+      "package_manager": "dnf",
+      "rolling": false,
+      "description": "RHEL 兼容企业发行版，官方提供容器根文件系统 tar。",
+      "homepage": "https://rockylinux.org/",
+      "versions": [
+        {"version":"9-latest","series":"9","kind":"container-tar","file":"Rocky-9-Container-Base.latest.aarch64.tar.xz","url":"https://download.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-Container-Base.latest.aarch64.tar.xz","mirrors":[],"checksums":null,"tawcroot":"glibc 2.34；容器 tar 布局需先展开再当 rootfs 用。","note":"容器根文件系统 tar（docker import 格式）。"}
       ]
     }
   ]
