@@ -1,0 +1,42 @@
+name: Smoke Worker
+
+# 从 GitHub runner 的网络实测已部署的 Worker（一键验证所有路由）。
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: "Worker 基地址"
+        required: true
+        default: "https://arm64-rootfs-hub.399233159.workers.dev"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe endpoints
+        env:
+          B: ${{ inputs.base }}
+        run: |
+          set -u
+          fail=0
+          for p in "/" "/?q=list" "/?q=count" "/?q=help" \
+                   "/?q=versions&s=debian" "/?q=name&s=ubuntu" \
+                   "/?q=url&s=debian&v=12" "/?q=size&s=debian&v=12" \
+                   "/?q=file&s=debian&v=12" "/?q=sha&s=debian&v=12" \
+                   "/?q=mirrors&s=alpine&v=3.24.4" "/?q=json&s=ubuntu&v=22.04.5" \
+                   "/?q=url&s=nope&v=1" "/?q=url&s=debian&v=99"; do
+            code=$(curl -sS --max-time 20 -o /tmp/body -w "%{http_code}" "$B$p") || code=000
+            first=$(head -c 160 /tmp/body | head -1)
+            echo "$code | $p | $first"
+            [ "$code" = "000" ] && fail=1
+          done
+          echo "--- CORS ---"
+          curl -sS -D - -o /dev/null "$B/?q=list" | grep -i "content-type\|access-control-allow-origin" || true
+          echo "--- download test (first 1 byte) ---"
+          U=$(curl -sS "$B/?q=url&s=debian&v=12")
+          echo "$U"
+          curl -sSL --max-time 30 -r 0-0 -o /dev/null -w "range_probe=%{http_code}\n" "$U" || true
+          exit $fail
